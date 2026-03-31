@@ -19,13 +19,25 @@ public class PostService {
         return post;
     }
 
+
     public List<Post> getAll(String sort) {
         List<Post> list = new ArrayList<>(store.posts.values());
 
         if ("likes".equals(sort)) {
             list.sort((a, b) -> b.getLikes() - a.getLikes());
         }
-
         return list;
+    }
+
+
+    public List<Post> searchByKeyword(String keyword) {
+        List<Post> result = new ArrayList<>();
+
+        for (Post post : store.posts.values()) {
+            if (post.getContent().toLowerCase().contains(keyword.toLowerCase())) {
+                result.add(post);
+            }
+        }
+        return result;
     }
 }

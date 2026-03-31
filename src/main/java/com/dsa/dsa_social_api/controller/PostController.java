@@ -22,4 +22,9 @@ public class PostController {
     public List<Post> get(@RequestParam(required = false) String sort) {
         return service.getAll(sort);
     }
+
+    @GetMapping("/search")
+    public List<Post> search(@RequestParam String keyword) {
+        return service.searchByKeyword(keyword);
+    }
 }
