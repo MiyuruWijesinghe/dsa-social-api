@@ -11,7 +11,6 @@ A backend project that demonstrates **Data Structures & Algorithms using real-wo
 | Array / List | JSON collections (GET /users) |
 | HashMap | Fast lookup (GET /users/{id}) |
 | Stack | Undo / history |
-| Undo Feature | Stack |
 | Queue | Job processing / requests |
 | Linked List | Feed / timeline |
 | Tree | Comments / categories |
