@@ -16,6 +16,10 @@ public class PostService {
 
     public Post create(Post post) {
         store.posts.put(post.getId(), post);
+
+        //push into stack
+        store.postStack.push(post);
+
         return post;
     }
 
@@ -39,5 +43,20 @@ public class PostService {
             }
         }
         return result;
+    }
+
+
+    public Post peekLastPost() {
+        return store.postStack.peek();
+    }
+
+
+    public Post undoLastPost() {
+        Post lastPost = store.postStack.pop();
+
+        if (lastPost != null) {
+            store.posts.remove(lastPost.getId());
+        }
+        return lastPost;
     }
 }

@@ -27,4 +27,14 @@ public class PostController {
     public List<Post> search(@RequestParam String keyword) {
         return service.searchByKeyword(keyword);
     }
+
+    @GetMapping("/undo/preview")
+    public Post previewUndo() {
+        return service.peekLastPost();
+    }
+
+    @DeleteMapping("/undo")
+    public Post undo() {
+        return service.undoLastPost();
+    }
 }
