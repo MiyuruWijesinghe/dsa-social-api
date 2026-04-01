@@ -23,4 +23,8 @@ public class FollowService {
     public List<Long> getFollowers(Long userId) {
         return store.graph.getFollowers(userId);
     }
+
+    public List<Long> getSuggestFollowers(Long userId) {
+        return store.graph.suggest(userId);
+    }
 }

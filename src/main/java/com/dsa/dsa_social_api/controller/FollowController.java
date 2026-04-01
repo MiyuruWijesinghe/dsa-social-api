@@ -16,7 +16,7 @@ public class FollowController {
     public String follow(@RequestParam Long userId,
                          @RequestParam Long targetId) {
         service.follow(userId, targetId);
-        return "Followed successfully";
+        return "User " + userId + " started to follow User " + targetId + " successfully";
     }
 
     @GetMapping("/following/{id}")
@@ -27,5 +27,10 @@ public class FollowController {
     @GetMapping("/followers/{id}")
     public List<Long> followers(@PathVariable Long id) {
         return service.getFollowers(id);
+    }
+
+    @GetMapping("/suggest-followers/{id}")
+    public List<Long> suggestFollowers(@PathVariable Long id) {
+        return service.getSuggestFollowers(id);
     }
 }

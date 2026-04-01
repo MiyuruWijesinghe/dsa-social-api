@@ -1,9 +1,6 @@
 package com.dsa.dsa_social_api.dsa;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Graph {
 
@@ -30,5 +27,20 @@ public class Graph {
         }
 
         return result;
+    }
+
+    // suggest new followers
+    public List<Long> suggest(Long user) {
+
+        Set<Long> suggestions = new HashSet<>();
+
+        for (Long friend : getFollowing(user)) {
+            suggestions.addAll(getFollowing(friend));
+        }
+
+        suggestions.remove(user);
+        suggestions.removeAll(getFollowing(user));
+
+        return new ArrayList<>(suggestions);
     }
 }
