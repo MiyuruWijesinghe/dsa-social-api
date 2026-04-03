@@ -12,6 +12,7 @@ import java.util.List;
 public class Comment {
 
     private Long id;
+    private Long postId;
     private String text;
     private List<Comment> replies = new ArrayList<>();
 }
